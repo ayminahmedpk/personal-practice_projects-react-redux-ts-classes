@@ -1,0 +1,8 @@
+
+
+0.1.0:
+  - functional
+  - copy over sources from repo-react-redux-js-classes to convert gradually to ts
+  - install redux, react-redux, redux-devtools-extension, redux-logger, redux-thunk
+  - get project from repo-react-ts-classes for old react version
+  - init

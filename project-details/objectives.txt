@@ -1,0 +1,5 @@
+
+
+Practicing redux with react in TS, using old versions and old class syntax
+
+POCs in the most primitive syntax we'll realistically encounter
