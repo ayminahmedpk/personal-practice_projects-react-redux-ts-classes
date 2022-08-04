@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import store from '../../Redux/01-basic-redux-mapStateToProps/store'
 
 import BranchA from './BranchA'
-import BranchB from './BranchB'
 
 export default class Root extends Component {
   render() {
@@ -14,7 +13,6 @@ export default class Root extends Component {
           <p className="root__name">Root</p>
           <div className="branches">
             <BranchA/>
-            <BranchB/>
           </div>
         </div>
       </Provider>

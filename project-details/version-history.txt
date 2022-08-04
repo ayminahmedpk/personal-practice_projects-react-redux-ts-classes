@@ -1,5 +1,11 @@
 
 
+0.1.1:
+  - displatch and actions + payload , combinedReducers and combined state seems
+    properly typed
+  - dispatch and actions (basic - no payload) seems properly typed
+  - mapStateToProps seems properly typed
+
 0.1.0:
   - functional
   - copy over sources from repo-react-redux-js-classes to convert gradually to ts
