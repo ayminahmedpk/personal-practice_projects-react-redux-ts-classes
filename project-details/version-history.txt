@@ -1,5 +1,10 @@
 
 
+0.1.2:
+  - thunk and types finally working somehow, without any 'any' and with using
+    as much of redux types as possible
+
+
 0.1.1:
   - displatch and actions + payload , combinedReducers and combined state seems
     properly typed

@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { AppActions, StateType } from '../../Redux/09-async-fetch-thunk/store'
+import { userActions } from '../../Redux/09-async-fetch-thunk/users/userActions'
 
 import { makeRequest } from '../../Redux/09-async-fetch-thunk/users/usersActionCreators'
 
-export class FetchController extends Component {
+type FetchControllerProps = {
+  makeRequest: () => void;
+}
+
+export class FetchController extends Component<FetchControllerProps> {
   render() {
     return (
       <>
@@ -15,7 +22,7 @@ export class FetchController extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<StateType, {}, AppActions>) => ({
   makeRequest: () => dispatch(makeRequest())
 })
 

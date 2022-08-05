@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux';
+import { StateType } from '../../Redux/09-async-fetch-thunk/store';
+import { usersListType } from '../../Redux/09-async-fetch-thunk/users/userActions';
 
-class DisplayComponent extends Component {
+type DisplayComponentProps = {
+  count: number;
+  text: string;
+  loading: boolean;
+  users: usersListType;
+  error: string;
   
-  
+}
+
+class DisplayComponent extends Component<DisplayComponentProps> {
 
   render() {
-
-    // const usersList = this.props.users.map(user => (
-    //   <p key={user.id}>{user.name}</p>
-    // ))
-
-    
-
-    // console.log(this.props.users);
-    // console.log(usersList);
     return (
       <div className='component'>
         <p className="component__name">DisplayComponent</p>
@@ -45,7 +45,7 @@ class DisplayComponent extends Component {
 // 2. This function will return an object of new props to add to this component,
 //    after linking those props to the state it received.
 // Essentially, it does the job of 'useSelector', so to speak.
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: StateType) => {
   const count = state.countReducer.count;
   const text = state.textReducer.text;
   const loading = state.usersReducer.loading;

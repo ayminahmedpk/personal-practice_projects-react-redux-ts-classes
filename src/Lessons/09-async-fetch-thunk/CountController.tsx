@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 
+import { Dispatch } from 'redux'
+
 import { connect } from 'react-redux'
 
 import { reset } from '../../Redux/05-wide-actions-multiple-reducers/globalActionCreators'
 import { increment, decrement } from '../../Redux/02-dispatch-and-actions/count/countActionCreators'
+import { CountActions } from '../../Redux/09-async-fetch-thunk/count/countActions'
 
-class CountController extends Component {
+type CountControllerProps = {
+  decrement: () => void,
+  increment: () => void,
+  reset    : () => void,
+}
+
+class CountController extends Component<CountControllerProps> {
   render() {
     return (
       <div className='component'>
@@ -21,7 +30,7 @@ class CountController extends Component {
 // 1. Expects connect to call this with the dispatch, and uses that to return
 //    handlers in the form of props that will trigger a dispatch of those action
 //    creators.
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<CountActions>) => {
   return {
     increment : () => dispatch(increment()),
     decrement : () => dispatch(decrement()),

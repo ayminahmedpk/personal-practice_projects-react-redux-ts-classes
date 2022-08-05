@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
@@ -6,7 +8,35 @@ import { textChange } from '../../Redux/04-action-payload-combine-reducers/text/
 import { increment, decrement } from '../../Redux/02-dispatch-and-actions/count/countActionCreators'
 import { reset } from '../../Redux/05-wide-actions-multiple-reducers/globalActionCreators'
 
-export class FlexibleController extends Component {
+import {Dispatch} from 'redux';
+import { TextActions } from '../../Redux/09-async-fetch-thunk/text/textActions'
+import { CountActions } from '../../Redux/09-async-fetch-thunk/count/countActions'
+import {StateType} from '../../Redux/09-async-fetch-thunk/store';
+
+
+// type FlexibleControllerOwnProps = {
+//   role: string;
+//   text: string;
+// }
+
+// type FlexibleControllerReduxProps = {
+//   decrement: () => void;
+//   increment: () => void;
+//   reset    : () => void;
+// }
+
+// type FlexibleControllerProps = FlexibleControllerOwnProps & FlexibleControllerReduxProps;
+
+type FlexibleControllerProps = {
+  role        : string;
+  text?       : string;
+  decrement?  : () => void;
+  increment?  : () => void;
+  reset       : () => void;
+  textChange? : (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export class FlexibleController extends Component<FlexibleControllerProps> {
 
   render() {
     return (
@@ -30,17 +60,20 @@ export class FlexibleController extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: StateType, ownProps: {role: string;}) => {
   if (ownProps.role === 'controlText') {
     return { text: state.textReducer.text }
   }
   return {}
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (
+  dispatch: Dispatch<TextActions | CountActions>,
+  ownProps: {role: string;}
+) => {
   if (ownProps.role === 'controlText') {
     return {
-      textChange : (event) => dispatch(textChange(event)),
+      textChange : (event: React.ChangeEvent<HTMLInputElement>) => dispatch(textChange(event)),
       reset      : () => dispatch(reset()),
     }
   }

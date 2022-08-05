@@ -1,10 +1,16 @@
+
+
 import React, { Component } from 'react'
 
 import FlexibleController from './FlexibleController'
 
-export default class BranchD extends Component {
+type FlexibleControllerState = {
+  role: string;
+};
+
+export default class BranchD extends Component<{}, FlexibleControllerState> {
   
-  constructor(props) {
+  constructor(props: {}) {
     super(props)
     this.state = { role: "controlCount" }
   }
