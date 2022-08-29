@@ -17,13 +17,13 @@ export const fetchUsersRequest: () => fetchUsersRequestAction = () => ({
 
 export const fetchUsersSuccess: (usersList: usersListType) => fetchUsersSuccessAction = (usersList) => ({
   type    : 'FETCH_USERS_SUCCESS' ,
-  payload : usersList           ,
+  payload : usersList             ,
 })
 
 
 export const fetchUsersFailure: (errorMessage: string) => fetchUsersFailureAction  = (errorMessage) => ({
   type    : 'FETCH_USERS_FAILURE' ,
-  payload : errorMessage        ,
+  payload : errorMessage          ,
 });
 
 

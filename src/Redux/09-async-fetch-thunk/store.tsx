@@ -11,6 +11,7 @@ import thunkMiddleware from 'redux-thunk';
 import { CountActions } from './count/countActions';
 import { TextActions } from './text/textActions';
 import { userActions } from './users/userActions';
+import { GlobalActions } from './globalActions';
 
 // Middleware's own requirement
 const logger = createLogger({});
@@ -23,7 +24,7 @@ const rootReducer = combineReducers({
 });
 
 export type StateType = ReturnType<typeof rootReducer>
-export type AppActions = CountActions | TextActions | userActions;
+export type AppActions = CountActions | TextActions | userActions | GlobalActions;
 
 const store = createStore<StateType, AppActions, {}, {}>(rootReducer,composeWithDevTools(applyMiddleware(logger, thunkMiddleware)));
 
