@@ -1,18 +1,12 @@
 
 import { Reducer } from "redux";
 import { userActions, usersListType } from "./userActions"
-
-
-import {
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE
-} from "./usersActionTypes"
+import { GlobalActions, ResetAction } from "../globalActions";
 
 export type usersState = {
-  loading: boolean,
-  users: usersListType,
-  error: string;
+  loading : boolean,
+  users   : usersListType,
+  error   : string;
 }
 
 const initialState: usersState = {
@@ -22,45 +16,36 @@ const initialState: usersState = {
 }
 
 
-// Note - we don't use the imported Reducer type due to type guarding
-// complications. Let TS infer the type.
-const usersReducer: Reducer<usersState, userActions> = (
-  state = initialState,
-  action: userActions,
-) => {
+const usersReducer: Reducer<usersState, userActions | GlobalActions> = ( state = initialState, action) => {
+
   switch(action.type) {
-    case FETCH_USERS_REQUEST:
+    case 'FETCH_USERS_REQUEST':
       return {
         ...state       ,
         loading : true ,
-    }
+    };
 
-    case FETCH_USERS_SUCCESS :
-      if("payload" in action) {
-        return {
-          ...state                 ,
-          loading : false          ,
-          users   : action.payload as usersListType,
-        }
-      }
-    break;
+    case 'FETCH_USERS_SUCCESS' :
+      return {
+        ...state                 ,
+        loading : false          ,
+        users   : action.payload ,
+      };
 
-      case FETCH_USERS_FAILURE :
-        if("payload" in action) {
-          return {
-            ...state                 ,
-            loading : false          ,
-            error   : action.payload as string,
-          }
-        }
-      break;
+    case 'FETCH_USERS_FAILURE' :
+      return {
+        ...state                 ,
+        loading : false          ,
+        error   : action.payload ,
+      };
+
+    case 'RESET' :
+      return initialState;
 
     default:
       return state;
   }
-
-  // To reassure TS know that we'll never return undefined
-  return state;
+  
 }
 
 export default usersReducer;

@@ -1,0 +1,19 @@
+
+
+The reducer and redux code has been significantly simplified in 0.1.4
+
+Instead of specifying type constants in a separate file and importing them,
+which caused TS many issues and resulted in may extra type assertions and type
+guards needed just to get things working,
+
+the better solution was to simply define string constants as the type of the
+'type' parameters of the relevant actions, and let TS do the verification for us
+later on in the reducer function and elsewhere.
+
+As a result, we get validation of the strings in the reducer switch case, (just
+press ctrl+space in front of a new case to inspect the options), and based on
+the chosen (or entered) case, TS already knows whether there is a payload or
+not, and also knows the type of the payload.
+
+The code is much cleaner and is more replicable - and actually possible to
+follow.
