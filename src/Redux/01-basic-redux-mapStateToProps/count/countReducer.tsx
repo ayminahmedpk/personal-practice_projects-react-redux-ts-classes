@@ -7,7 +7,7 @@ export type CountActionType = {type: string}
 
 const initialState: CountStateType = { count: 50 }
 
-export const countReducer: Reducer <CountStateType, CountActionType> = (state = initialState, action: CountActionType) => {
+export const countReducer: Reducer <CountStateType, CountActionType> = (state = initialState, action) => {
 
   switch (action.type) {
     // not needed until actions are defined

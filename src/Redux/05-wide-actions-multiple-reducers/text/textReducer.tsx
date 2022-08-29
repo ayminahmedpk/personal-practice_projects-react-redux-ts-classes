@@ -1,7 +1,8 @@
 
 import { Reducer } from "redux"
-import { GlobalActions } from "../globalActions";
-import { TextActions } from "./textActions";
+
+import { TextActions } from "./textActions"
+import { GlobalActions } from "../globalActions"
 
 type TextState = { text: string; }
 

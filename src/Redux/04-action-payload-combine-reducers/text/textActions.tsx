@@ -2,20 +2,28 @@
 
 import { Action } from "redux";
 
-// export interface ITextChange extends Action<string> {
-//   payload: string;
-// }
-
-// export type textActions = ITextChange;
-
-
-
-// can create a generic interface for this type of stuff ourselves
-interface ActionWithPayload<T, U> extends Action<T> {
-  payload: U
+export type TextChangeAction = {
+  type: 'TEXT_CHANGE';
+  payload: string;
 }
 
-export interface ITextChange extends ActionWithPayload<string, string> {}
+export type TextActions = TextChangeAction;
 
 
-export type textActions = ITextChange;
+// // export interface ITextChange extends Action<string> {
+// //   payload: string;
+// // }
+
+// // export type textActions = ITextChange;
+
+
+
+// // can create a generic interface for this type of stuff ourselves
+// interface ActionWithPayload<T, U> extends Action<T> {
+//   payload: U
+// }
+
+// export interface ITextChange extends ActionWithPayload<string, string> {}
+
+
+// export type textActions = ITextChange;

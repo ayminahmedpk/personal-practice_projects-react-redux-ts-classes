@@ -1,13 +1,17 @@
+
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StateType } from '../../Redux/04-action-payload-combine-reducers/store'
-import { textChange } from '../../Redux/04-action-payload-combine-reducers/text/textActionCreators'
-import {Dispatch} from 'redux';
-import { TextActions } from '../../Redux/04-action-payload-combine-reducers/text/textActions'
+
+import { reset } from '../../Redux/07-middleware/globalActionCreators'
+import { StateType } from '../../Redux/07-middleware/store'
+import { textChange } from '../../Redux/07-middleware/text/textActionCreators'
+
 
 type TextControllerProps = {
   text       : string;
-  textChange : (e:React.ChangeEvent<HTMLInputElement>) => void;
+  textChange : (event: React.ChangeEvent<HTMLInputElement>) => void;
+  reset      : () => void;
 }
 
 export class TextController extends Component<TextControllerProps> {
@@ -20,6 +24,7 @@ export class TextController extends Component<TextControllerProps> {
           value={this.props.text}
           onChange={this.props.textChange}
         />
+        <button onClick={this.props.reset}>Reset</button>
       </div>
     )
   }
@@ -29,9 +34,9 @@ const mapStateToProps = (state: StateType) => ({
   text: state.textReducer.text
 })
 
-// const mapDispatchToProps = { textChange }
-const mapDispatchToProps = (dispatch: Dispatch<TextActions>) => ({
-  textChange: (e: React.ChangeEvent<HTMLInputElement>) => dispatch(textChange(e))
-})
+const mapDispatchToProps = {
+  textChange,
+  reset
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextController)

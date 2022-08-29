@@ -1,5 +1,12 @@
 
 
+0.1.3:
+  - about to touch Thunk's user related code
+  - 1-8 all tested - 9 touched (except user related code), 9 tested
+  - every TS file transformed into TS with proper types
+  - redux and reducer codes made much cleaner
+
+
 0.1.2:
   - thunk and types finally working somehow, without any 'any' and with using
     as much of redux types as possible

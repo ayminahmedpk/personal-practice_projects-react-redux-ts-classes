@@ -2,12 +2,12 @@
 
 import {Reducer} from 'redux';
 
-import {textActions} from './textActions';
+import {TextActions} from './textActions';
 
-type textState = {text: string;}
+type TextState = {text: string;}
 const initialState = {text: 'default'}
 
-export const textReducer:Reducer<textState, textActions > = (state = initialState, action) => {
+export const textReducer:Reducer<TextState, TextActions> = (state = initialState, action) => {
 
   switch(action.type) {
     case 'TEXT_CHANGE':

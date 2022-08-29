@@ -3,7 +3,9 @@
 import { Action } from "redux";
 
 
-export type incrementAction = Action<string>
-export type decrementAction = Action<string>
+// export type IncrementAction = Action<'INCREMENT'>
+// export type DecrementAction = Action<'DECREMENT'>
+export type IncrementAction = {type: 'INCREMENT'};
+export type DecrementAction = {type: 'DECREMENT'};
 
-export type countActions = incrementAction | decrementAction;
+export type CountActions = IncrementAction | DecrementAction;

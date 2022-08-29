@@ -12,6 +12,7 @@ import {Dispatch} from 'redux';
 import { TextActions } from '../../Redux/09-async-fetch-thunk/text/textActions'
 import { CountActions } from '../../Redux/09-async-fetch-thunk/count/countActions'
 import {StateType} from '../../Redux/09-async-fetch-thunk/store';
+import { GlobalActions } from '../../Redux/09-async-fetch-thunk/globalActions'
 
 
 // type FlexibleControllerOwnProps = {
@@ -68,7 +69,7 @@ const mapStateToProps = (state: StateType, ownProps: {role: string;}) => {
 }
 
 const mapDispatchToProps = (
-  dispatch: Dispatch<TextActions | CountActions>,
+  dispatch: Dispatch<TextActions | CountActions | GlobalActions>,
   ownProps: {role: string;}
 ) => {
   if (ownProps.role === 'controlText') {

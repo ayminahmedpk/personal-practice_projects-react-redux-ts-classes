@@ -2,8 +2,8 @@
 
 
 import { Reducer } from "redux";
-import { GlobalActions } from "../globalActions";
 import { CountActions } from "./countActions";
+import {GlobalActions} from '../globalActions';
 
 // random value for testing
 

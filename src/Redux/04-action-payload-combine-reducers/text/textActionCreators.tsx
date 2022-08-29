@@ -2,19 +2,10 @@
 
 import React from "react"
 
-import { ActionCreator } from "redux"
+import {TextChangeAction} from "./textActions";
 
-import { ITextChange } from "./textActions"
-
-import { TEXT_CHANGE } from "./textTypes"
-
-export const textChange: ActionCreator<ITextChange> = (
-  event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-  return {
-    type: TEXT_CHANGE,
-    payload: event.target.value
-  }
-}
-
-export type textChangeType = typeof textChange;
+export const textChange: (event: React.ChangeEvent<HTMLInputElement>) => TextChangeAction = 
+(event) => ({
+  type    : "TEXT_CHANGE",
+  payload : event.target.value,
+})
